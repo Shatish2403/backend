@@ -3,22 +3,21 @@ package in.rentiz.backend.enums;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum FurnishingType {
-    FULL("Full"),
-    SEMI("Semi"),
-    NONE("None");
+public enum ListedBy {
+    OWNER("owner"),
+    BROKER("broker");
 
     private final String value;
 
-    FurnishingType(String value) { this.value = value; }
+    ListedBy(String value) { this.value = value; }
 
     @JsonValue
     public String getValue() { return value; }
 
     @JsonCreator
-    public static FurnishingType fromValue(String text) {
-        for (FurnishingType f : FurnishingType.values()) {
-            if (f.value.equalsIgnoreCase(text)) return f;
+    public static ListedBy fromValue(String text) {
+        for (ListedBy l : ListedBy.values()) {
+            if (l.value.equalsIgnoreCase(text)) return l;
         }
         throw new IllegalArgumentException("Unexpected value: " + text);
     }
